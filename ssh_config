@@ -1,0 +1,15 @@
+Host gitlab
+    HostName gitlab.eecs.umich.edu
+    User git
+    IdentityFile ~/.ssh/id_rsa
+
+Host github
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa
+
+# CAEN
+Host caen
+    HostName login-course-2fa.engin.umich.edu
+    User chiahao
+    Compression yes

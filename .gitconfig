@@ -1,0 +1,7 @@
+[user]
+	email = chiahao@umich.edu
+	name = zjhxs
+[alias]
+	st = status
+[core]
+	excludesfile = /home/zjhxs/.gitignore
