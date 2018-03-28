@@ -56,10 +56,14 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+parse_git_branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='\[\033[00;92m\]\u@\h\[\033[00m\]:\[\033[00;94m\]\w\[\033[00;33m\]$(parse_git_branch)\[\033[00m\]\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -115,4 +119,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-export PATH=~/FileZilla3/bin:~/bin:$PATH
+export PATH=/usr/caen/bin:$HOME/perl/bin:/afs/umich.edu/user/j/i/jieltan/Public:~/cppcheck-1.81:~/sublime_text_3:$PATH
+export PERLPATH=$HOME/perl
+export VIMRUNTIME=$HOME/.local/home/chiahao/.local/share/vim/vim80
+export TERM=screen-256color
