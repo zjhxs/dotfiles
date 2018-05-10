@@ -9,8 +9,18 @@ Host github
     IdentityFile ~/.ssh/id_rsa
 
 # CAEN
-Host caen
+Host caen_offcampus
     HostName login-course-2fa.engin.umich.edu
+    User chiahao
+    Compression yes
+
+Host caen_oncampus
+    HostName oncampus-course.engin.umich.edu
+    User chiahao
+    Compression yes
+
+Host caen_restricted
+    HostName restricted-course.engin.umich.edu
     User chiahao
     Compression yes
 
