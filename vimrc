@@ -66,6 +66,17 @@ set tabstop=4
 set shiftwidth=4
 set noshowmode
 
+" Search for current visual selection
+vnoremap // y/\V<C-R>"<CR>
+
+" Move between open buffers
+nnoremap <C-n> :bnext<CR>
+nnoremap <C-p> :bprev<CR>
+
+" Treat given characters as a word boundary
+set iskeyword-=.                " '.' is an end of word designator
+set iskeyword-=#                " '#' is an end of word designator
+
 " rainbow parentheses settings
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 let g:rainbow_conf = {
