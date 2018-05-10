@@ -98,7 +98,7 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-  alias zshconfig="vim ~/.zshrc"
-  alias sshconfig="vim ~/.ssh/config"
-  alias vimconfig="vim ~/.vimrc"
+  alias zshconfig="vim ~/dotfiles/zshrc"
+  alias sshconfig="vim ~/dotfiles/ssh_config"
+  alias vimconfig="vim ~/dotfiles/vimrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
