@@ -65,6 +65,12 @@ set nocompatible
 set tabstop=4
 set shiftwidth=4
 set noshowmode
+set number
+set relativenumber
+set nobackup		" do not keep a backup file, use versions instead
+set undofile		" keep an undo file (undo changes after closing)
+set showmatch		" Show matching brackets.
+set ignorecase		" Do case insensitive matching
 
 " Search for current visual selection
 vnoremap // y/\V<C-R>"<CR>
@@ -209,12 +215,6 @@ let g:asyncrun_rootmarks = ['.svn', '.git', '.root', '_darcs', 'build.xml']
 nnoremap <silent> <F7> :AsyncRun -cwd=<root> make <cr>
 nnoremap <silent> <F8> :AsyncRun -cwd=<root> -raw make run <cr>
 nnoremap <silent> <F6> :AsyncRun -cwd=<root> -raw make test <cr>
-
-set number
-set nobackup		" do not keep a backup file, use versions instead
-set undofile		" keep an undo file (undo changes after closing)
-set showmatch		" Show matching brackets.
-set ignorecase		" Do case insensitive matching
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
