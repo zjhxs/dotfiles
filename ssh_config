@@ -26,5 +26,7 @@ Host caen_restricted
 
 Host linode
 	HostName 172.105.230.176
+	ServerAliveInterval 60
+	ServerAliveCountMax 3
 	User zjhxs
 	IdentityFile ~/.ssh/id_rsa
