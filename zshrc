@@ -1,14 +1,14 @@
 # If you come from bash you might have to change your $PATH.
   export PATH=$HOME/bin:/usr/local/bin:$PATH
-  PATH="/home/zjhxs/perl5/bin${PATH:+:${PATH}}"; export PATH;
-  PERL5LIB="/home/zjhxs/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-  PERL_LOCAL_LIB_ROOT="/home/zjhxs/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-  PERL_MB_OPT="--install_base \"/home/zjhxs/perl5\""; export PERL_MB_OPT;
-  PERL_MM_OPT="INSTALL_BASE=/home/zjhxs/perl5"; export PERL_MM_OPT;
-  DEFAULT_USER="zjhxs"
+  PATH="/home/chiahao/perl5/bin${PATH:+:${PATH}}"; export PATH;
+  PERL5LIB="/home/chiahao/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+  PERL_LOCAL_LIB_ROOT="/home/chiahao/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+  PERL_MB_OPT="--install_base \"/home/chiahao/perl5\""; export PERL_MB_OPT;
+  PERL_MM_OPT="INSTALL_BASE=/home/chiahao/perl5"; export PERL_MM_OPT;
+  DEFAULT_USER="chiahao"
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/zjhxs/.oh-my-zsh
+  export ZSH=/home/chiahao/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
