@@ -102,3 +102,5 @@ source $ZSH/oh-my-zsh.sh
   alias sshconfig="vim ~/dotfiles/ssh_config"
   alias vimconfig="vim ~/dotfiles/vimrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

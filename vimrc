@@ -298,9 +298,3 @@ if has('langmap') && exists('+langnoremap')
 	" compatible).
 	set langnoremap
 endif
-
-" Add optional packages.
-"
-" The matchit plugin makes the % command work better, but it is not backwards
-" compatible.
-packadd matchit
