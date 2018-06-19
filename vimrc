@@ -11,7 +11,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-fugitive'
-Plug 'octol/vim-cpp-enhanced-highlight',  { 'for': 'cpp' }
 Plug 'mhinz/vim-signify'
 Plug 'ervandew/supertab'
 Plug 'ludovicchabant/vim-gutentags'
@@ -20,6 +19,10 @@ Plug 'Shougo/echodoc.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'w0rp/ale'
+Plug 'crusoexia/vim-monokai'
+Plug 'sbdchd/neoformat'
+Plug 'tpope/vim-unimpaired'
+Plug 'sillybun/vim-repl/'
 
 " Any valid git URL is allowed
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
@@ -29,6 +32,7 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'octol/vim-cpp-enhanced-highlight',  { 'for': 'cpp' }
 " Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 " Using a non-master branch
@@ -41,8 +45,9 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
 " Plugin outside ~/.vim/plugged with post-update hook
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
 function! BuildYCM(info)
 	" info is a dictionary with 3 fields
@@ -63,6 +68,8 @@ call plug#end()
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+let mapleader=" "
+
 set tabstop=4
 set shiftwidth=4
 set noshowmode
@@ -77,8 +84,8 @@ set ignorecase		" Do case insensitive matching
 vnoremap // y/\V<C-R>"<CR>
 
 " Move between open buffers
-nnoremap <C-n> :bnext<CR>
-nnoremap <C-p> :bprev<CR>
+nnoremap <C-j> :bnext<CR>
+nnoremap <C-k> :bprev<CR>
 
 " Treat given characters as a word boundary
 set iskeyword-=.                " '.' is an end of word designator
@@ -98,6 +105,24 @@ let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
 let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
 let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
+
+" LeaderF
+let g:Lf_ShortcutF = '<c-p>'
+let g:Lf_ShortcutB = '<m-n>'
+noremap <c-n> :LeaderfMru<cr>
+noremap <m-p> :LeaderfFunction!<cr>
+noremap <m-n> :LeaderfBuffer<cr>
+noremap <m-m> :LeaderfTag<cr>
+let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
+
+let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
+let g:Lf_WorkingDirectoryMode = 'Ac'
+let g:Lf_WindowHeight = 0.30
+let g:Lf_CacheDirectory = expand('~/.vim/cache')
+let g:Lf_ShowRelativePath = 0
+let g:Lf_HideHelp = 1
+let g:Lf_StlColorscheme = 'powerline'
+let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
 
 " rainbow parentheses settings
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
@@ -123,6 +148,20 @@ let g:rainbow_conf = {
 			\		'css': 0,
 			\	}
 			\}
+
+" REPL
+nnoremap <leader>r :REPLToggle<Cr>
+let g:repl_position = 3
+let g:repl_program = {
+			\	"python": "python",
+			\	"default": "zsh"
+			\	}
+let g:repl_exit_commands = {
+			\	"python": "quit()",
+			\	"bash": "exit",
+			\	"zsh": "exit",
+			\	"default": "exit",
+			\	}
 
 " Supertab
 " let g:SuperTabCrMapping = 1
