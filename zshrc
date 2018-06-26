@@ -1,14 +1,14 @@
 # If you come from bash you might have to change your $PATH.
-  export PATH=$HOME/bin:/usr/local/bin:$PATH
-  PATH="/home/zjhxs/perl5/bin${PATH:+:${PATH}}"; export PATH;
-  PERL5LIB="/home/zjhxs/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-  PERL_LOCAL_LIB_ROOT="/home/zjhxs/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-  PERL_MB_OPT="--install_base \"/home/zjhxs/perl5\""; export PERL_MB_OPT;
-  PERL_MM_OPT="INSTALL_BASE=/home/zjhxs/perl5"; export PERL_MM_OPT;
-  DEFAULT_USER="zjhxs"
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+PATH="/home/zjhxs/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/zjhxs/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/zjhxs/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/zjhxs/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/zjhxs/perl5"; export PERL_MM_OPT;
+DEFAULT_USER="zjhxs"
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/zjhxs/.oh-my-zsh
+export ZSH=/home/zjhxs/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -33,7 +33,7 @@ ZSH_THEME="agnoster"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-  export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -65,16 +65,17 @@ ZSH_THEME="agnoster"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
-  zsh-autosuggestions
-  fzf-zsh
+git
+zsh-autosuggestions
+fzf-zsh
+vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-  export MANPATH="/usr/local/man:$MANPATH"
+export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -90,7 +91,7 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-  export SSH_KEY_PATH="~/.ssh/rsa_id"
+export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -98,9 +99,22 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-  alias zshconfig="vim ~/dotfiles/zshrc"
-  alias sshconfig="vim ~/dotfiles/ssh_config"
-  alias vimconfig="vim ~/dotfiles/vimrc"
+alias zshconfig="vim ~/dotfiles/zshrc"
+alias sshconfig="vim ~/dotfiles/ssh_config"
+alias vimconfig="vim ~/dotfiles/vimrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# up
+function up_widget() {
+	BUFFER="cd .."
+	zle accept-line
+}
+zle -N up_widget
+bindkey "^k" up_widget
+
+export TERM=xterm-256color
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# key-bindings
+bindkey '^ ' autosuggest-accept
