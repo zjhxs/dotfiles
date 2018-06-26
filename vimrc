@@ -22,7 +22,7 @@ Plug 'w0rp/ale'
 Plug 'crusoexia/vim-monokai'
 Plug 'sbdchd/neoformat'
 Plug 'tpope/vim-unimpaired'
-Plug 'sillybun/vim-repl/'
+Plug 'jiangmiao/auto-pairs'
 
 " Any valid git URL is allowed
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
@@ -71,6 +71,8 @@ set nocompatible
 let mapleader=" "
 
 set tabstop=4
+set autochdir
+set tagrelative
 set shiftwidth=4
 set noshowmode
 set number
@@ -79,6 +81,9 @@ set nobackup		" do not keep a backup file, use versions instead
 set undofile		" keep an undo file (undo changes after closing)
 set showmatch		" Show matching brackets.
 set ignorecase		" Do case insensitive matching
+
+set cursorline
+" hi CursorLine
 
 " Search for current visual selection
 vnoremap // y/\V<C-R>"<CR>
@@ -149,20 +154,6 @@ let g:rainbow_conf = {
 			\	}
 			\}
 
-" REPL
-nnoremap <leader>r :REPLToggle<Cr>
-let g:repl_position = 3
-let g:repl_program = {
-			\	"python": "python",
-			\	"default": "zsh"
-			\	}
-let g:repl_exit_commands = {
-			\	"python": "quit()",
-			\	"bash": "exit",
-			\	"zsh": "exit",
-			\	"default": "exit",
-			\	}
-
 " Supertab
 " let g:SuperTabCrMapping = 1
 
@@ -187,7 +178,7 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 " UltiSnippets
 let g:UltiSnipsUsePythonVersion = 3
 " better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<Right>"
+let g:UltiSnipsExpandTrigger = "<C-l>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
@@ -197,6 +188,7 @@ let g:echodoc#enable_at_startup=1
 " vim-airline
 let g:airline_powerline_fonts = 1
 let g:airline_theme='molokai'
+let g:airline#extensions#tabline#enabled = 1
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
