@@ -89,8 +89,8 @@ set cursorline
 vnoremap // y/\V<C-R>"<CR>
 
 " Move between open buffers
-nnoremap <C-j> :bnext<CR>
-nnoremap <C-k> :bprev<CR>
+nnoremap <C-k> :bnext<CR>
+nnoremap <C-j> :bprev<CR>
 
 " Treat given characters as a word boundary
 set iskeyword-=.                " '.' is an end of word designator
