@@ -97,6 +97,19 @@ set iskeyword-=.                " '.' is an end of word designator
 set iskeyword-=#                " '#' is an end of word designator
 
 " ale
+let g:ale_linters = {
+	\   'cpp': ['clang', 'cppcheck'],
+	\   'csh': ['shell'],
+	\   'go': ['gofmt', 'golint', 'go vet'],
+	\   'help': [],
+	\   'perl': ['perlcritic'],
+	\   'python': ['flake8', 'mypy', 'pylint'],
+	\   'rust': ['cargo'],
+	\   'spec': [],
+	\   'text': [],
+	\   'vim': ['vint'],
+	\   'zsh': ['shell'],
+	\}
 let g:ale_linters_explicit = 1
 let g:ale_completion_delay = 500
 let g:ale_echo_delay = 20
@@ -128,6 +141,10 @@ let g:Lf_ShowRelativePath = 0
 let g:Lf_HideHelp = 1
 let g:Lf_StlColorscheme = 'powerline'
 let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
+
+" auto-pairs conflict resolve
+let g:AutoPairsShortcutToggle = ''
+let g:AutoPairsShortcutJump = 'M-l'
 
 " rainbow parentheses settings
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
@@ -189,6 +206,7 @@ let g:echodoc#enable_at_startup=1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='molokai'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved' "to distinguish files with the same name in different dirs
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
