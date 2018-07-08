@@ -24,6 +24,7 @@ Plug 'sbdchd/neoformat'
 Plug 'tpope/vim-unimpaired'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mhinz/vim-startify'
+Plug 'lervag/vimtex'
 
 " Any valid git URL is allowed
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
@@ -106,6 +107,9 @@ vnoremap // y/\V<C-R>"<CR>
 " Move between open buffers
 nnoremap <C-k> :bnext<CR>
 nnoremap <C-j> :bprev<CR>
+" Copy and paste
+vnoremap <C-c> "*y :let @+=@*<CR>
+map <C-v> "+P
 
 " Treat given characters as a word boundary
 set iskeyword-=.                " '.' is an end of word designator
