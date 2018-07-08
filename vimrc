@@ -45,6 +45,16 @@ Plug 'octol/vim-cpp-enhanced-highlight',  { 'for': 'cpp' }
 " Plugin options
 " Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
+function! BuildYCM(info)
+	" info is a dictionary with 3 fields
+	" - name:   name of the plugin
+	" - status: 'installed', 'updated', or 'unchanged'
+	" - force:  set on PlugInstall! or PlugUpdate!
+	if a:info.status == 'installed' || a:info.force
+		!./install.py --clang-completer --java-completer
+	endif
+endfunction
+
 " Plugin outside ~/.vim/plugged with post-update hook
 if has('unix')
 	Plug 'junegunn/fzf.vim'
@@ -61,16 +71,6 @@ elseif has('win32') || has('win64')
 	let g:deoplete#enable_at_startup = 1
 endif
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-
-function! BuildYCM(info)
-	" info is a dictionary with 3 fields
-	" - name:   name of the plugin
-	" - status: 'installed', 'updated', or 'unchanged'
-	" - force:  set on PlugInstall! or PlugUpdate!
-	if a:info.status == 'installed' || a:info.force
-		!./install.py --clang-completer --java-completer
-	endif
-endfunction
 
 " Initialize plugin system
 call plug#end()
