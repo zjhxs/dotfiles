@@ -23,6 +23,7 @@ Plug 'crusoexia/vim-monokai'
 Plug 'sbdchd/neoformat'
 Plug 'tpope/vim-unimpaired'
 Plug 'jiangmiao/auto-pairs'
+Plug 'mhinz/vim-startify'
 
 " Any valid git URL is allowed
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
@@ -45,8 +46,20 @@ Plug 'octol/vim-cpp-enhanced-highlight',  { 'for': 'cpp' }
 " Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
 " Plugin outside ~/.vim/plugged with post-update hook
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+if has('unix')
+	Plug 'junegunn/fzf.vim'
+	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+	Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+elseif has('win32') || has('win64')
+	if has('nvim')
+		Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+	else
+ 		Plug 'Shougo/deoplete.nvim'
+ 		Plug 'roxma/nvim-yarp'
+ 		Plug 'roxma/vim-hug-neovim-rpc'
+	endif
+	let g:deoplete#enable_at_startup = 1
+endif
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
 function! BuildYCM(info)
@@ -58,8 +71,6 @@ function! BuildYCM(info)
 		!./install.py --clang-completer --java-completer
 	endif
 endfunction
-
-Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 
 " Initialize plugin system
 call plug#end()
@@ -174,22 +185,23 @@ let g:rainbow_conf = {
 " Supertab
 " let g:SuperTabCrMapping = 1
 
-" YCM settings
-let g:ycm_add_preview_to_completeopt = 0
-let g:ycm_use_ultisnips_completer = 1
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-" inoremap <expr> <Enter> pumvisible() ? "<Esc>a" : "<Enter>"
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-let g:ycm_show_diagnostics_ui = 0
-let g:ycm_server_log_level = 'info'
-let g:ycm_min_num_identifier_candidate_chars = 2
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_complete_in_strings=1
-set completeopt=longest,menuone
+if has('unix') " YCM settings
+	let g:ycm_add_preview_to_completeopt = 0
+	let g:ycm_use_ultisnips_completer = 1
+	let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+	" inoremap <expr> <Enter> pumvisible() ? "<Esc>a" : "<Enter>"
+	inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+	let g:ycm_show_diagnostics_ui = 0
+	let g:ycm_server_log_level = 'info'
+	let g:ycm_min_num_identifier_candidate_chars = 2
+	let g:ycm_collect_identifiers_from_comments_and_strings = 1
+	let g:ycm_complete_in_strings=1
+	set completeopt=longest,menuone
 
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+	" make YCM compatible with UltiSnips (using supertab)
+	let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+	let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+endif
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
 " UltiSnippets
@@ -298,7 +310,7 @@ set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-" let &guioptions = substitute(&guioptions, "t", "", "g")
+let &guioptions = substitute(&guioptions, "t", "", "g")
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -318,6 +330,9 @@ if &t_Co > 2 || has("gui_running")
 	syntax enable
 	colorscheme monokai
 	set hlsearch
+endif
+if has('gui_running')
+	set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 14
 endif
 
 " Only do this part when compiled with support for autocommands.
