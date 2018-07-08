@@ -64,9 +64,9 @@ elseif has('win32') || has('win64')
 	if has('nvim')
 		Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 	else
- 		Plug 'Shougo/deoplete.nvim'
- 		Plug 'roxma/nvim-yarp'
- 		Plug 'roxma/vim-hug-neovim-rpc'
+		Plug 'Shougo/deoplete.nvim'
+		Plug 'roxma/nvim-yarp'
+		Plug 'roxma/vim-hug-neovim-rpc'
 	endif
 	let g:deoplete#enable_at_startup = 1
 endif
@@ -96,6 +96,10 @@ set ignorecase		" Do case insensitive matching
 set cursorline
 " hi CursorLine
 
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
+" highlight Comment cterm=italic
+
 " Search for current visual selection
 vnoremap // y/\V<C-R>"<CR>
 
@@ -109,18 +113,18 @@ set iskeyword-=#                " '#' is an end of word designator
 
 " ale
 let g:ale_linters = {
-	\   'cpp': ['clang', 'cppcheck'],
-	\   'csh': ['shell'],
-	\   'go': ['gofmt', 'golint', 'go vet'],
-	\   'help': [],
-	\   'perl': ['perlcritic'],
-	\   'python': ['flake8', 'mypy', 'pylint'],
-	\   'rust': ['cargo'],
-	\   'spec': [],
-	\   'text': [],
-	\   'vim': ['vint'],
-	\   'zsh': ['shell'],
-	\}
+			\   'cpp': ['clang', 'cppcheck'],
+			\   'csh': ['shell'],
+			\   'go': ['gofmt', 'golint', 'go vet'],
+			\   'help': [],
+			\   'perl': ['perlcritic'],
+			\   'python': ['flake8', 'mypy', 'pylint'],
+			\   'rust': ['cargo'],
+			\   'spec': [],
+			\   'text': [],
+			\   'vim': ['vint'],
+			\   'zsh': ['shell'],
+			\}
 let g:ale_linters_explicit = 1
 let g:ale_completion_delay = 500
 let g:ale_echo_delay = 20
@@ -238,17 +242,17 @@ nmap <leader>- <Plug>AirlineSelectPrevTab
 nmap <leader>+ <Plug>AirlineSelectNextTab
 
 let g:airline#extensions#tabline#buffer_idx_format = {
-	\ '0': ' ',
-	\ '1': '➊ ',
-	\ '2': '➋ ',
-	\ '3': '➌ ',
-	\ '4': '➍ ',
-	\ '5': '➎ ',
-	\ '6': '➏ ',
-	\ '7': '➐ ',
-	\ '8': '➑ ',
-	\ '9': '➒ '
-	\}
+			\ '0': ' ',
+			\ '1': '➊ ',
+			\ '2': '➋ ',
+			\ '3': '➌ ',
+			\ '4': '➍ ',
+			\ '5': '➎ ',
+			\ '6': '➏ ',
+			\ '7': '➐ ',
+			\ '8': '➑ ',
+			\ '9': '➒ '
+			\}
 
 let g:airline#extensions#whitespace#checks = [ 'indent', 'long', 'mixed-indent-file' ]
 if !exists('g:airline_symbols')
