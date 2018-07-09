@@ -89,7 +89,7 @@ endif
 let mapleader=" "
 
 set tabstop=4
-set autochdir
+" set autochdir
 set tagrelative
 set shiftwidth=4
 set noshowmode
