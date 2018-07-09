@@ -33,7 +33,10 @@ Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
+", { 'on':  'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
 Plug 'octol/vim-cpp-enhanced-highlight',  { 'for': 'cpp' }
 " Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
@@ -97,6 +100,11 @@ set ignorecase		" Do case insensitive matching
 set cursorline
 " hi CursorLine
 
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Startify | silent NERDTree | wincmd w | endif
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 " highlight Comment cterm=italic
@@ -107,6 +115,12 @@ vnoremap // y/\V<C-R>"<CR>
 " Move between open buffers
 nnoremap <C-k> :bnext<CR>
 nnoremap <C-j> :bprev<CR>
+
+" Switch windows
+nmap <leader>j <C-w>j
+nmap <leader>k <C-w>k
+nmap <leader>l <C-w>l
+nmap <leader>h <C-w>h
 " Copy and paste
 vnoremap <C-c> "*y :let @+=@*<CR>
 map <C-v> "+P
@@ -114,6 +128,8 @@ map <C-v> "+P
 " Treat given characters as a word boundary
 set iskeyword-=.                " '.' is an end of word designator
 set iskeyword-=#                " '#' is an end of word designator
+
+let g:NERDTreeWinPos = "right"
 
 " ale
 let g:ale_linters = {
@@ -314,6 +330,11 @@ let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 " 检测 ~/.cache/tags 不存在就新建
 if !isdirectory(s:vim_tags)
 	silent! call mkdir(s:vim_tags, 'p')
+endif
+
+" Tex
+if has('nvim')
+	let g:vimtex_compiler_progname = 'nvr'
 endif
 
 " Asyncrun
