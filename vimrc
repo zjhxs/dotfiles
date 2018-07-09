@@ -82,6 +82,9 @@ call plug#end()
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+if has('win32') || has('win64')
+	set encoding=utf-8
+endif
 
 let mapleader=" "
 
@@ -130,6 +133,7 @@ set iskeyword-=.                " '.' is an end of word designator
 set iskeyword-=#                " '#' is an end of word designator
 
 let g:NERDTreeWinPos = "right"
+map <M-f> :NERDTreeToggle<CR>
 
 " ale
 let g:ale_linters = {
@@ -165,7 +169,7 @@ let g:Lf_ShortcutB = '<m-n>'
 noremap <c-n> :LeaderfMru<cr>
 noremap <m-p> :LeaderfFunction!<cr>
 noremap <m-n> :LeaderfBuffer<cr>
-noremap <m-m> :LeaderfTag<cr>
+noremap <m-t> :LeaderfTag<cr>
 let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
 
 let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
