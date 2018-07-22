@@ -24,7 +24,7 @@ Plug 'sbdchd/neoformat'
 Plug 'tpope/vim-unimpaired'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mhinz/vim-startify'
-Plug 'lervag/vimtex'
+Plug 'vim-scripts/Conque-GDB'
 
 " Any valid git URL is allowed
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
@@ -38,6 +38,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 Plug 'octol/vim-cpp-enhanced-highlight',  { 'for': 'cpp' }
+Plug 'lervag/vimtex', { 'for': 'tex'}
 " Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 " Using a non-master branch
@@ -340,6 +341,9 @@ endif
 if has('nvim')
 	let g:vimtex_compiler_progname = 'nvr'
 endif
+let g:vimtex_view_general_viewer = 'okular'
+let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+let g:vimtex_view_general_options_latexmk = '--unique'
 
 " Asyncrun
 " 自动打开 quickfix window ，高度为 6
