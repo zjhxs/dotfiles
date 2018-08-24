@@ -100,9 +100,9 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="vim ~/dotfiles/zshrc"
-alias sshconfig="vim ~/dotfiles/ssh_config"
-alias vimconfig="vim ~/dotfiles/vimrc"
+alias zshconfig="nvim ~/dotfiles/zshrc"
+alias sshconfig="nvim ~/dotfiles/ssh_config"
+alias vimconfig="nvim ~/dotfiles/vimrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # up

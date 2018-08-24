@@ -12,7 +12,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'Shougo/echodoc.vim'
@@ -125,6 +125,11 @@ nmap <leader>j <C-w>j
 nmap <leader>k <C-w>k
 nmap <leader>l <C-w>l
 nmap <leader>h <C-w>h
+" move windows
+nmap <leader>J <C-w>J
+nmap <leader>K <C-w>K
+nmap <leader>L <C-w>L
+nmap <leader>H <C-w>H
 " Copy and paste
 vnoremap <C-c> "*y :let @+=@*<CR>
 map <C-v> "+P
@@ -228,10 +233,10 @@ if has('unix') " YCM settings
 	set completeopt=longest,menuone
 
 	" make YCM compatible with UltiSnips (using supertab)
-	let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-	let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+	" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+	" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 endif
-let g:SuperTabDefaultCompletionType = '<C-n>'
+" let g:SuperTabDefaultCompletionType = '<C-n>'
 
 " UltiSnippets
 let g:UltiSnipsUsePythonVersion = 3
