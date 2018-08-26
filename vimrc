@@ -107,11 +107,13 @@ set cursorline
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Startify | silent NERDTree | wincmd w | endif
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+" close vim when the last buffer is closed
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
-" highlight Comment cterm=italic
+"highlight Comment cterm=none
+highlight Comment gui=none
 
 " Search for current visual selection
 vnoremap // y/\V<C-R>"<CR>
