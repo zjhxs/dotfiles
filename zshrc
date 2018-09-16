@@ -94,6 +94,17 @@ export MANPATH="/usr/local/man:$MANPATH"
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
+# Python environments
+export ENV_DIR="/home/zjhxs/venvs"  # modify this
+eta2() { source "${ENV_DIR}/eta2/bin/activate"; }
+eta3() { source "${ENV_DIR}/eta3/bin/activate"; }
+exit() {
+    case `command -v python` in
+        ${ENV_DIR}/*) deactivate;;
+        *) builtin exit;;
+    esac
+}
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -104,6 +115,9 @@ alias zshconfig="nvim ~/dotfiles/zshrc"
 alias sshconfig="nvim ~/dotfiles/ssh_config"
 alias vimconfig="nvim ~/dotfiles/vimrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# key-bindings
+bindkey '^ ' autosuggest-accept
 
 # up
 function up_widget() {
@@ -116,6 +130,3 @@ bindkey "^k" up_widget
 export TERM=xterm-256color
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# key-bindings
-bindkey '^ ' autosuggest-accept
