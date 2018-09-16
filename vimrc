@@ -104,6 +104,18 @@ set ignorecase		" Do case insensitive matching
 set cursorline
 " hi CursorLine
 
+" to avoid vim ignore alt key bindings, but this will casue problem in nvim
+if has('vim')
+	let c='a'
+	while c <= 'z'
+	  exec "set <A-".c.">=\e".c
+	  exec "imap \e".c." <A-".c.">"
+	  let c = nr2char(1+char2nr(c))
+	endw
+endif
+
+set timeout ttimeoutlen=50
+
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Startify | silent NERDTree | wincmd w | endif
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
@@ -141,7 +153,7 @@ set iskeyword-=.                " '.' is an end of word designator
 set iskeyword-=#                " '#' is an end of word designator
 
 let g:NERDTreeWinPos = "right"
-map <M-f> :NERDTreeToggle<CR>
+noremap <m-f> :NERDTreeToggle<CR>
 
 " ale
 let g:ale_linters = {
