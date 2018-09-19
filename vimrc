@@ -238,7 +238,7 @@ if has('unix') " YCM settings
 	let g:ycm_use_ultisnips_completer = 1
 	let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 	" inoremap <expr> <Enter> pumvisible() ? "<Esc>a" : "<Enter>"
-	inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+	" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 	let g:ycm_show_diagnostics_ui = 0
 	let g:ycm_server_log_level = 'info'
 	let g:ycm_min_num_identifier_candidate_chars = 2
