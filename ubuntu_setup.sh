@@ -52,15 +52,15 @@ git clone https://github.com/universal-ctags/ctags
 cd vim
 # configure vim features
 ./configure --with-features=huge \
-							--enable-multibyte \
-							--enable-rubyinterp=yes \
-							--enable-python3interp=yes \
-							--with-python3-config-dir=/usr/lib/python3.5/config \
-							--enable-perlinterp=yes \
-							--enable-luainterp=yes \
-							--enable-gui=auto \
-							--enable-cscope \
-							--prefix=/usr/local
+			--enable-multibyte \
+			--enable-rubyinterp=yes \
+			--enable-python3interp=yes \
+			--with-python3-config-dir=/usr/lib/python3.6/config-3.6m-x86_64-linux-gnu \
+			--enable-perlinterp=yes \
+			--enable-luainterp=yes \
+			--enable-gui=auto \
+			--enable-cscope \
+			--prefix=/usr/local
 make VIMRUNTIMEDIR=/usr/local/share/vim/vim81
 sudo checkinstall
 
