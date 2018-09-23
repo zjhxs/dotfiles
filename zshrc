@@ -1,10 +1,5 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-PATH="/home/chiahao/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/chiahao/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/chiahao/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/chiahao/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/chiahao/perl5"; export PERL_MM_OPT;
 export PATH=$HOME/python/Python-2.7.15/:$PATH
 export PYTHONPATH=$HOME/python/Python-2.7.15
 DEFAULT_USER="chiahao"
@@ -15,7 +10,7 @@ export ZSH=/home/chiahao/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -70,6 +65,7 @@ plugins=(
 git
 zsh-autosuggestions
 fzf-zsh
+zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -94,6 +90,7 @@ export MANPATH="/usr/local/man:$MANPATH"
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
+<<<<<<< HEAD
 # 427path
 export PATH427="/afs/umich.edu/class/eecs427/f18/$USER"
 
@@ -114,3 +111,18 @@ alias fdoc427='evince /afs/umich.edu/class/eecs427/ibm13/cmrf8sf/V1.6.0.1LM/doc/
 alias m484="module load eecs484"
 alias sql="rlwrap sqlplus"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# key-bindings
+bindkey '^ ' autosuggest-accept
+
+# up
+function up_widget() {
+	BUFFER="cd .."
+	zle accept-line
+}
+zle -N up_widget
+bindkey "^k" up_widget
+
+export TERM=xterm-256color
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
