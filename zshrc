@@ -1,14 +1,16 @@
 # If you come from bash you might have to change your $PATH.
-  export PATH=$HOME/bin:/usr/local/bin:$PATH
-  PATH="/home/chiahao/perl5/bin${PATH:+:${PATH}}"; export PATH;
-  PERL5LIB="/home/chiahao/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-  PERL_LOCAL_LIB_ROOT="/home/chiahao/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-  PERL_MB_OPT="--install_base \"/home/chiahao/perl5\""; export PERL_MB_OPT;
-  PERL_MM_OPT="INSTALL_BASE=/home/chiahao/perl5"; export PERL_MM_OPT;
-  DEFAULT_USER="chiahao"
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+PATH="/home/chiahao/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/chiahao/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/chiahao/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/chiahao/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/chiahao/perl5"; export PERL_MM_OPT;
+export PATH=$HOME/python/Python-2.7.15/:$PATH
+export PYTHONPATH=$HOME/python/Python-2.7.15
+DEFAULT_USER="chiahao"
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/chiahao/.oh-my-zsh
+export ZSH=/home/chiahao/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -33,7 +35,7 @@ ZSH_THEME="agnoster"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-  export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -65,16 +67,16 @@ ZSH_THEME="agnoster"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
-  zsh-autosuggestions
-  fzf-zsh
+git
+zsh-autosuggestions
+fzf-zsh
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-  export MANPATH="/usr/local/man:$MANPATH"
+export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -90,7 +92,10 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-  export SSH_KEY_PATH="~/.ssh/rsa_id"
+export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# 427path
+export PATH427="/afs/umich.edu/class/eecs427/f18/$USER"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -98,7 +103,14 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-  alias zshconfig="vim ~/dotfiles/zshrc"
-  alias sshconfig="vim ~/dotfiles/ssh_config"
-  alias vimconfig="vim ~/dotfiles/vimrc"
+alias vim="nvim"
+alias zshconfig="vim ~/dotfiles/zshrc"
+alias sshconfig="vim ~/dotfiles/ssh_config"
+alias vimconfig="vim ~/dotfiles/vimrc"
+alias m427='module load eecs427/f18;cd /afs/umich.edu/class/eecs427/f18/$USER'
+alias c427='cd /afs/umich.edu/class/eecs427/f18/$USER'
+alias doc427='evince /afs/umich.edu/class/eecs427/ibm13/docs/layout_rules_427.pdf &'
+alias fdoc427='evince /afs/umich.edu/class/eecs427/ibm13/cmrf8sf/V1.6.0.1LM/doc/cmrf8sf.design_manual.pdf &'
+alias m484="module load eecs484"
+alias sql="rlwrap sqlplus"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
