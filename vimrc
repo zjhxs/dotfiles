@@ -24,6 +24,7 @@ Plug 'sbdchd/neoformat'
 Plug 'tpope/vim-unimpaired'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mhinz/vim-startify'
+" Plug 'cosminadrianpopescu/vim-sql-workbench'
 Plug 'vim-scripts/Conque-GDB'
 
 " Any valid git URL is allowed
@@ -112,9 +113,9 @@ if has('vim')
 	  exec "imap \e".c." <A-".c.">"
 	  let c = nr2char(1+char2nr(c))
 	endw
-endif
 
-set timeout ttimeoutlen=50
+	set timeout ttimeoutlen=50
+endif
 
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Startify | silent NERDTree | wincmd w | endif
