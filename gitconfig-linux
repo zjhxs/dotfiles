@@ -1,0 +1,4 @@
+[include]
+	path = ./dotfiles/gitconfig-common
+[core]
+	autocrlf = input
