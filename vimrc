@@ -12,13 +12,9 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
-" Plug 'ervandew/supertab'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'skywind3000/asyncrun.vim'
 Plug 'Shougo/echodoc.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
-Plug 'w0rp/ale'
 Plug 'crusoexia/vim-monokai'
 Plug 'sbdchd/neoformat'
 Plug 'tpope/vim-unimpaired'
@@ -29,16 +25,12 @@ Plug 'vim-scripts/Conque-GDB'
 " Any valid git URL is allowed
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
-" Multiple Plug commands can be written in a single line using | separators
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
 " On-demand loading
 Plug 'scrooloose/nerdtree'
 ", { 'on':  'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 Plug 'octol/vim-cpp-enhanced-highlight',  { 'for': 'cpp' }
-Plug 'lervag/vimtex', { 'for': 'tex'}
 " Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 " Using a non-master branch
@@ -49,33 +41,6 @@ Plug 'lervag/vimtex', { 'for': 'tex'}
 
 " Plugin options
 " Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-
-function! BuildYCM(info)
-	" info is a dictionary with 3 fields
-	" - name:   name of the plugin
-	" - status: 'installed', 'updated', or 'unchanged'
-	" - force:  set on PlugInstall! or PlugUpdate!
-	if a:info.status == 'installed' || a:info.force
-		!./install.py --clang-completer --java-completer
-	endif
-endfunction
-
-" Plugin outside ~/.vim/plugged with post-update hook
-if has('unix')
-	Plug 'junegunn/fzf.vim'
-	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-	Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
-elseif has('win32') || has('win64')
-	if has('nvim')
-		Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-	else
-		Plug 'Shougo/deoplete.nvim'
-		Plug 'roxma/nvim-yarp'
-		Plug 'roxma/vim-hug-neovim-rpc'
-	endif
-	let g:deoplete#enable_at_startup = 1
-endif
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
 " Initialize plugin system
 call plug#end()
@@ -230,35 +195,6 @@ let g:rainbow_conf = {
 			\	}
 			\}
 
-" Supertab
-" let g:SuperTabCrMapping = 1
-
-if has('unix') " YCM settings
-	let g:ycm_add_preview_to_completeopt = 0
-	let g:ycm_use_ultisnips_completer = 1
-	let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-	" inoremap <expr> <Enter> pumvisible() ? "<Esc>a" : "<Enter>"
-	" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-	let g:ycm_show_diagnostics_ui = 0
-	let g:ycm_server_log_level = 'info'
-	let g:ycm_min_num_identifier_candidate_chars = 2
-	let g:ycm_collect_identifiers_from_comments_and_strings = 1
-	let g:ycm_complete_in_strings=1
-	set completeopt=longest,menuone
-
-	" make YCM compatible with UltiSnips (using supertab)
-	" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-	" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-endif
-" let g:SuperTabDefaultCompletionType = '<C-n>'
-
-" UltiSnippets
-let g:UltiSnipsUsePythonVersion = 2
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<C-l>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-
 " echodoc
 let g:echodoc#enable_at_startup=1
 
@@ -333,53 +269,6 @@ else
 	let g:airline_symbols.readonly = ''
 	let g:airline_symbols.linenr = ''
 endif
-
-" tags
-set tags=./.tags;,.tags
-" gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
-let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
-
-" 所生成的数据文件的名称
-let g:gutentags_ctags_tagfile = '.tags'
-
-" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
-let s:vim_tags = expand('~/.cache/tags')
-let g:gutentags_cache_dir = s:vim_tags
-
-" 配置 ctags 的参数
-let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
-let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
-let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
-
-" 检测 ~/.cache/tags 不存在就新建
-if !isdirectory(s:vim_tags)
-	silent! call mkdir(s:vim_tags, 'p')
-endif
-
-" Tex
-if has('nvim')
-	let g:vimtex_compiler_progname = 'nvr'
-endif
-let g:vimtex_view_general_viewer = 'okular'
-let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
-let g:vimtex_view_general_options_latexmk = '--unique'
-
-" Asyncrun
-" 自动打开 quickfix window ，高度为 6
-let g:asyncrun_open = 6
-
-" 任务结束时候响铃提醒
-let g:asyncrun_bell = 1
-
-" 设置 F10 打开/关闭 Quickfix 窗口
-nnoremap <F4> :call asyncrun#quickfix_toggle(6)<cr>
-
-nnoremap <silent> <F9> :AsyncRun gcc -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
-nnoremap <silent> <F5> :AsyncRun -raw -cwd=$(VIM_FILEDIR) "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
-let g:asyncrun_rootmarks = ['.svn', '.git', '.root', '_darcs', 'build.xml']
-nnoremap <silent> <F7> :AsyncRun -cwd=<root> make <cr>
-nnoremap <silent> <F8> :AsyncRun -cwd=<root> -raw make run <cr>
-nnoremap <silent> <F6> :AsyncRun -cwd=<root> -raw make test <cr>
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"

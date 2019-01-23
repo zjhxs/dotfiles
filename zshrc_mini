@@ -1,7 +1,10 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/lib:$HOME/usr/lib:$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/python/Python-2.7.15/:$PATH
 export PYTHONPATH=$HOME/python/Python-2.7.15
+export LD_LIBRARY_PATH=~/lib/
+export LD_PATH=~/lib/
+export LIBPATH=~/lib/
 DEFAULT_USER="chiahao"
 
 # Path to your oh-my-zsh installation.
@@ -10,7 +13,7 @@ export ZSH=/home/chiahao/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="muse"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -90,7 +93,6 @@ export MANPATH="/usr/local/man:$MANPATH"
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-<<<<<<< HEAD
 # 427path
 export PATH427="/afs/umich.edu/class/eecs427/f18/$USER"
 
@@ -104,7 +106,7 @@ alias vim="nvim"
 alias zshconfig="vim ~/dotfiles/zshrc"
 alias sshconfig="vim ~/dotfiles/ssh_config"
 alias vimconfig="vim ~/dotfiles/vimrc"
-alias m427='module load eecs427/f18;cd /afs/umich.edu/class/eecs427/f18/$USER'
+alias m427='module load eecs427/f18;cd /afs/umich.edu/class/eecs427/f18/group7/'
 alias c427='cd /afs/umich.edu/class/eecs427/f18/$USER'
 alias doc427='evince /afs/umich.edu/class/eecs427/ibm13/docs/layout_rules_427.pdf &'
 alias fdoc427='evince /afs/umich.edu/class/eecs427/ibm13/cmrf8sf/V1.6.0.1LM/doc/cmrf8sf.design_manual.pdf &'
