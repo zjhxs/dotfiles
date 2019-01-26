@@ -1,6 +1,8 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
+source ~/.bash_profile
+zsh
 
 # If not running interactively, don't do anything
 case $- in
@@ -92,4 +94,3 @@ export PATH=$HOME/nvim:/usr/caen/bin:$HOME/perl/bin:/afs/umich.edu/user/j/i/jiel
 export PERLPATH=$HOME/perl
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-/bin/zsh

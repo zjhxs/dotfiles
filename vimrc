@@ -20,10 +20,9 @@ Plug 'sbdchd/neoformat'
 Plug 'tpope/vim-unimpaired'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mhinz/vim-startify'
-Plug 'vim-scripts/Conque-GDB'
 
 " Any valid git URL is allowed
-Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
 " On-demand loading
 Plug 'scrooloose/nerdtree'
@@ -109,9 +108,9 @@ nmap <leader>J <C-w>J
 nmap <leader>K <C-w>K
 nmap <leader>L <C-w>L
 nmap <leader>H <C-w>H
-" Copy and paste
-vnoremap <C-c> "*y :let @+=@*<CR>
-map <C-v> "+P
+" Copy and paste not surpported in CAEN
+" vnoremap <C-c> "*y :let @+=@*<CR>
+" map <C-v> "+P
 
 " Treat given characters as a word boundary
 set iskeyword-=.                " '.' is an end of word designator
@@ -119,6 +118,7 @@ set iskeyword-=#                " '#' is an end of word designator
 
 let g:NERDTreeWinPos = "right"
 noremap <m-f> :NERDTreeToggle<CR>
+let g:python3_host_prog = "/home/chiahao/.linuxbrew/bin/python3"
 
 " ale
 let g:ale_linters = {
