@@ -68,6 +68,17 @@ set ignorecase		" Do case insensitive matching
 set cursorline
 " hi CursorLine
 
+" Use a blinking upright bar cursor in Insert mode, a blinking block in normal
+if &term == 'xterm-256color' || &term == 'screen-256color'
+	let &t_SI = "\<Esc>[5 q"
+	let &t_EI = "\<Esc>[1 q"
+endif
+
+if exists('$TMUX')
+	let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+	let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+endif
+
 " to avoid vim ignore alt key bindings, but this will casue problem in nvim
 if has('vim')
 	let c='a'
