@@ -121,5 +121,4 @@ if ! shopt -oq posix; then
 fi
 export PATH=/usr/caen/bin:$HOME/perl/bin:/afs/umich.edu/user/j/i/jieltan/Public:~/cppcheck-1.81:~/sublime_text_3:$PATH
 export PERLPATH=$HOME/perl
-export VIMRUNTIME=$HOME/.local/home/chiahao/.local/share/vim/vim80
 export TERM=screen-256color
