@@ -42,6 +42,17 @@ Plug 'octol/vim-cpp-enhanced-highlight',  { 'for': 'cpp' }
 " Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
 " Initialize plugin system
+function! BuildYCM(info)
+	" info is a dictionary with 3 fields
+	" - name:   name of the plugin
+	" - status: 'installed', 'updated', or 'unchanged'
+	" - force:  set on PlugInstall! or PlugUpdate!
+	if a:info.status == 'installed' || a:info.force
+		!./install.py --clang-completer --java-completer
+	endif
+endfunction
+
+" Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 call plug#end()
 
 " Use Vim settings, rather than Vi settings (much better!).
