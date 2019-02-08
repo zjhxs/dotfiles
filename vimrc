@@ -121,6 +121,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Startify | silent NER
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 " close vim when the last buffer is closed
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd FileType sql setlocal shiftwidth=2 softtabstop=2 expandtab
 
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
@@ -182,6 +183,7 @@ let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
 let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
 let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
+let g:ale_python_pylint_options = '--max-line-length=80'
 
 " LeaderF
 let g:Lf_ShortcutF = '<c-p>'
@@ -236,7 +238,7 @@ let g:rainbow_conf = {
 if has('unix') " YCM settings
 	let g:ycm_add_preview_to_completeopt = 0
 	let g:ycm_use_ultisnips_completer = 1
-	let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+	let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 	" inoremap <expr> <Enter> pumvisible() ? "<Esc>a" : "<Enter>"
 	" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 	let g:ycm_show_diagnostics_ui = 0
