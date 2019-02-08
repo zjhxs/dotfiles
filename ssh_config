@@ -1,3 +1,5 @@
+Host *
+    IPQoS=throughput
 Host gitlab
     HostName gitlab.eecs.umich.edu
     User git

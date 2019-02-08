@@ -90,6 +90,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+export TERM=screen-256color
 export PATH=$HOME/nvim:/usr/caen/bin:$HOME/perl/bin:/afs/umich.edu/user/j/i/jieltan/Public:~/cppcheck-1.81:~/sublime_text_3:$PATH
 export PERLPATH=$HOME/perl
 

@@ -98,15 +98,16 @@ if has('vim')
 	  exec "imap \e".c." <A-".c.">"
 	  let c = nr2char(1+char2nr(c))
 	endw
-endif
 
-set timeout ttimeoutlen=50
+	set timeout ttimeoutlen=50
+endif
 
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Startify | silent NERDTree | wincmd w | endif
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 " close vim when the last buffer is closed
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd FileType sql setlocal shiftwidth=2 softtabstop=2 expandtab
 
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
@@ -169,6 +170,7 @@ let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
 let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
 let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
+let g:ale_python_pylint_options = '--max-line-length=80'
 
 " LeaderF
 let g:Lf_ShortcutF = '<c-p>'
@@ -216,6 +218,32 @@ let g:rainbow_conf = {
 			\		'css': 0,
 			\	}
 			\}
+
+if has('unix') " YCM settings
+	let g:ycm_add_preview_to_completeopt = 0
+	let g:ycm_use_ultisnips_completer = 1
+	let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+	" inoremap <expr> <Enter> pumvisible() ? "<Esc>a" : "<Enter>"
+	" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+	let g:ycm_show_diagnostics_ui = 0
+	let g:ycm_server_log_level = 'info'
+	let g:ycm_min_num_identifier_candidate_chars = 2
+	let g:ycm_collect_identifiers_from_comments_and_strings = 1
+	let g:ycm_complete_in_strings=1
+	set completeopt=longest,menuone
+
+	" make YCM compatible with UltiSnips (using supertab)
+	" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+	" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+endif
+" let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" UltiSnippets
+let g:UltiSnipsUsePythonVersion = 3
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<C-l>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " echodoc
 let g:echodoc#enable_at_startup=1

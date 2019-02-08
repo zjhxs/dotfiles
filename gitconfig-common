@@ -4,6 +4,6 @@
 [alias]
 	st = status
 [core]
-	excludesfile = /home/zjhxs/.gitignore
+	excludesfile = ~/.gitignore
 [push]
 	default = simple
