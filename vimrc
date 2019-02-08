@@ -25,7 +25,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mhinz/vim-startify'
 " Plug 'cosminadrianpopescu/vim-sql-workbench'
-Plug 'vim-scripts/Conque-GDB'
 
 " Any valid git URL is allowed
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
